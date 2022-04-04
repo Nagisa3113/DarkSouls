@@ -15,10 +15,18 @@ public class PlayerInput : MonoBehaviour
     public string keyC;
     public string keyD;
 
+    public string keyJLeft;
+    public string keyJRight;
+    public string keyJUp;
+    public string keyJDown;
+
     [Header("==== Output Signals ====")] public float Dup;
     public float Dright;
     public float Dmag;
     public Vector3 Dvec;
+
+    public float JUp;
+    public float JRight;
 
     // 1. pressing signal
     public bool run;
@@ -44,6 +52,9 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        JUp = (Input.GetKey(keyJUp) ? 1.0f : 0) - (Input.GetKey(keyJDown) ? 1.0f : 0);
+        JRight = (Input.GetKey(keyJRight) ? 1.0f : 0) - (Input.GetKey(keyJLeft) ? 1.0f : 0);
+
         targetDup = (Input.GetKey(keyUp) ? 1.0f : 0) - (Input.GetKey(keyDown) ? 1.0f : 0);
         targetDright = (Input.GetKey(keyRight) ? 1.0f : 0) - (Input.GetKey(keyLeft) ? 1.0f : 0);
 
