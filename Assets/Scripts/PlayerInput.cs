@@ -33,8 +33,11 @@ public class PlayerInput : MonoBehaviour
 
     // 2. trigger once signal
     public bool jump;
-
     public bool lastJump;
+    public bool attack;
+    public bool lastAttack;
+    
+    
     // 3. double trigger
 
 
@@ -87,8 +90,22 @@ public class PlayerInput : MonoBehaviour
         {
             jump = false;
         }
-
         lastJump = newJump;
+        
+        
+        bool newAttack = Input.GetKey(keyC);
+        attack = newAttack;
+        if (newAttack != lastAttack && newAttack == true)
+        {
+            attack = true;
+        }
+        else
+        {
+            attack = false;
+        }
+        lastAttack = newAttack;
+        
+        
     }
 
     //Mapping for Squaring the Circular Disc

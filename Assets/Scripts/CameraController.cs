@@ -28,21 +28,12 @@ public class CameraController : MonoBehaviour
         camera = Camera.main.gameObject;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 tempModelEuler = model.transform.eulerAngles;
 
-        playerHandle.transform.Rotate(Vector3.up, pi.JRight * horizontalSpeed * Time.deltaTime);
-        // camerHandle.transform.Rotate(Vector3.right, pi.JUp * -horizontalSpeed * Time.deltaTime,
-        //     Space.World);
-
-        tempEulerX -= pi.JUp * verticalSpeed * Time.deltaTime;
+        playerHandle.transform.Rotate(Vector3.up, pi.JRight * horizontalSpeed * Time.fixedDeltaTime);
+        tempEulerX -= pi.JUp * verticalSpeed * Time.fixedDeltaTime;
         tempEulerX = Mathf.Clamp(tempEulerX, -30, 30);
         camerHandle.transform.localEulerAngles = new Vector3(tempEulerX, 0, 0);
         

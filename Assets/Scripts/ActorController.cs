@@ -9,21 +9,31 @@ public class ActorController : MonoBehaviour
     public PlayerInput pi;
     public float walkSpeed = 2.0f;
     public float runMultiplier = 2.0f;
-    public float jumpVelocity;
+    public float jumpVelocity = 5.0f;
     public float rollVelocity = 1f;
 
-    [SerializeField] private Animator anim;
+    [Space(10)] [Header("===== Friction Settings =====")]
+    public PhysicMaterial frictionOne;
+
+    public PhysicMaterial frictionZero;
+
+
+    private Animator anim;
     private Rigidbody rigid;
     private Vector3 planarVec;
     private Vector3 thrustVec;
-
+    private bool canAttack;
     public bool lockPlanar = false;
+    private CapsuleCollider col;
+    private float lerpTarget;
+    private Vector3 deltaPos;
 
     void Awake()
     {
         pi = GetComponent<PlayerInput>();
         anim = model.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
+        col = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
@@ -40,6 +50,12 @@ public class ActorController : MonoBehaviour
         if (pi.jump)
         {
             anim.SetTrigger("jump");
+            canAttack = false;
+        }
+
+        if (pi.attack && CheckState("ground") && canAttack)
+        {
+            anim.SetTrigger("attack");
         }
 
         if (pi.Dmag > 0.1f)
@@ -56,8 +72,15 @@ public class ActorController : MonoBehaviour
     private void FixedUpdate()
     {
         // rigid.position += movingVec * Time.fixedDeltaTime;
+        rigid.position += deltaPos;
         rigid.velocity = new Vector3(planarVec.x, rigid.velocity.y, planarVec.z) + thrustVec;
         thrustVec = Vector3.zero;
+        deltaPos = Vector3.zero;
+    }
+
+    bool CheckState(string stateName, string layerName = "Base Layer")
+    {
+        return anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(layerName)).IsName(stateName);
     }
 
 
@@ -91,6 +114,13 @@ public class ActorController : MonoBehaviour
     {
         pi.inputEnabled = true;
         lockPlanar = false;
+        canAttack = true;
+        col.material = frictionOne;
+    }
+
+    public void OnGroundExit()
+    {
+        col.material = frictionZero;
     }
 
     public void OnFallEnter()
@@ -115,5 +145,44 @@ public class ActorController : MonoBehaviour
     public void OnJabUpdate()
     {
         thrustVec = model.transform.forward * anim.GetFloat("jabVelocity");
+    }
+
+    public void OnAttack1hAEnter()
+    {
+        pi.inputEnabled = false;
+        // lockPlanar = true;
+        lerpTarget = 1.0f;
+    }
+
+
+    public void OnAttack1hAUpdate()
+    {
+        thrustVec = model.transform.forward * anim.GetFloat("attack1hAVelocity");
+        float currentWeight = anim.GetLayerWeight(anim.GetLayerIndex("Attack Layer"));
+        currentWeight = Mathf.Lerp(currentWeight, lerpTarget, 5f * Time.deltaTime);
+        anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), currentWeight);
+    }
+
+    public void OnAttackIdleEnter()
+    {
+        pi.inputEnabled = true;
+        // lockPlanar = false;
+        //anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 0f);
+        lerpTarget = 0f;
+    }
+
+    public void OnAttackIdleUpdate()
+    {
+        float currentWeight = anim.GetLayerWeight(anim.GetLayerIndex("Attack Layer"));
+        currentWeight = Mathf.Lerp(currentWeight, lerpTarget, 5f * Time.deltaTime);
+        anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), currentWeight);
+    }
+
+    public void OnUpdateRM(object _deltaPos)
+    {
+        if (CheckState("attack1hC", "Attack Layer"))
+        {
+            deltaPos += (Vector3) _deltaPos;
+        }
     }
 }
