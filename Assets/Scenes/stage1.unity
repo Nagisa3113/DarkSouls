@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96272a02cea1b814793e6b91628b533d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pi: {fileID: 1910890857}
+  pi: {fileID: 0}
   horizontalSpeed: 80
   verticalSpeed: 80
   cameraDampValue: 0.05
@@ -3201,6 +3201,7 @@ GameObject:
   - component: {fileID: 1910890860}
   - component: {fileID: 1910890857}
   - component: {fileID: 1910890859}
+  - component: {fileID: 1910890862}
   m_Layer: 0
   m_Name: PlayerHandle
   m_TagString: Untagged
@@ -3215,11 +3216,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910890856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75bd678f9ba68334896ccc3db677ad31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dup: 0
+  Dright: 0
+  Dmag: 0
+  Dvec: {x: 0, y: 0, z: 0}
+  JUp: 0
+  JRight: 0
+  run: 0
+  jump: 0
+  attack: 0
+  inputEnabled: 1
   keyUp: w
   keyDown: s
   keyLeft: a
@@ -3232,18 +3243,6 @@ MonoBehaviour:
   keyJRight: right
   keyJUp: up
   keyJDown: down
-  Dup: 0
-  Dright: 0
-  Dmag: 0
-  Dvec: {x: 0, y: 0, z: 0}
-  JUp: 0
-  JRight: 0
-  run: 0
-  jump: 0
-  lastJump: 0
-  attack: 0
-  lastAttack: 0
-  inputEnabled: 1
 --- !u!136 &1910890858
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3312,3 +3311,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910890862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910890856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4faa7a486b38c24795d0291ef39dcb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dup: 0
+  Dright: 0
+  Dmag: 0
+  Dvec: {x: 0, y: 0, z: 0}
+  JUp: 0
+  JRight: 0
+  run: 0
+  jump: 0
+  attack: 0
+  inputEnabled: 1
+  axisX: axisX
+  axisY: axisY
+  axisJright: axis4
+  axisJup: axis5
+  btnA: btn0
+  btnB: btn1
+  btnX: btn2
+  btnY: btn3

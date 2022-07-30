@@ -6,13 +6,13 @@ using UnityEngine;
 public class ActorController : MonoBehaviour
 {
     public GameObject model;
-    public PlayerInput pi;
+    public IUserInput pi;
     public float walkSpeed = 2.0f;
     public float runMultiplier = 2.0f;
     public float jumpVelocity = 5.0f;
     public float rollVelocity = 1f;
 
-    [Space(10)] [Header("===== Friction Settings =====")]
+    [Space(10)] [Header("=====   Friction Settings   =====")]
     public PhysicMaterial frictionOne;
 
     public PhysicMaterial frictionZero;
@@ -30,7 +30,15 @@ public class ActorController : MonoBehaviour
 
     void Awake()
     {
-        pi = GetComponent<PlayerInput>();
+        IUserInput[] inputs = GetComponents<IUserInput>();
+        foreach (var input in inputs)
+        {
+            if (input.enabled == true)
+            {
+                pi = input;
+            }
+        }
+
         anim = model.GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
         col = GetComponent<CapsuleCollider>();
@@ -182,7 +190,7 @@ public class ActorController : MonoBehaviour
     {
         if (CheckState("attack1hC", "Attack Layer"))
         {
-            deltaPos += (Vector3) _deltaPos;
+            deltaPos += (Vector3)_deltaPos;
         }
     }
 }

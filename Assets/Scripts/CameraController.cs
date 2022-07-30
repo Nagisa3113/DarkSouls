@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public PlayerInput pi;
+    public IUserInput pi;
     public float horizontalSpeed = 80.0f;
     public float verticalSpeed = 80.0f;
     public float cameraDampValue = 0.05f;
@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 
     private float tempEulerX;
     private GameObject model;
-    private GameObject camera;
+    private GameObject _camera;
 
     private Vector3 cameraDampVelocity;
 
@@ -24,8 +24,10 @@ public class CameraController : MonoBehaviour
         camerHandle = transform.parent.gameObject;
         playerHandle = camerHandle.transform.parent.gameObject;
         tempEulerX = 20;
-        model = playerHandle.GetComponent<ActorController>().model;
-        camera = Camera.main.gameObject;
+        ActorController ac = playerHandle.GetComponent<ActorController>();
+        model = ac.model;
+        pi = ac.pi;
+        _camera = Camera.main.gameObject;
     }
 
     void FixedUpdate()
@@ -36,11 +38,11 @@ public class CameraController : MonoBehaviour
         tempEulerX -= pi.JUp * verticalSpeed * Time.fixedDeltaTime;
         tempEulerX = Mathf.Clamp(tempEulerX, -30, 30);
         camerHandle.transform.localEulerAngles = new Vector3(tempEulerX, 0, 0);
-        
+
         model.transform.eulerAngles = tempModelEuler;
-        camera.transform.position =
-            Vector3.SmoothDamp(camera.transform.position, transform.position, ref cameraDampVelocity, cameraDampValue);
+        _camera.transform.position =
+            Vector3.SmoothDamp(_camera.transform.position, transform.position, ref cameraDampVelocity, cameraDampValue);
         // camera.transform.position = Vector3.Lerp(camera.transform.position, transform.position, 0.2f);
-        camera.transform.eulerAngles = transform.eulerAngles;
+        _camera.transform.eulerAngles = transform.eulerAngles;
     }
 }
