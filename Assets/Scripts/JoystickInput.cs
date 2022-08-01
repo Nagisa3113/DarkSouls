@@ -15,7 +15,8 @@ public class JoystickInput : IUserInput
     public string btnB = "btn1";
     public string btnX = "btn2";
     public string btnY = "btn3";
-
+    public string btnLB = "btn4";
+    public string btnLRT = "btn5";
 
     // Update is called once per frame
     void Update()
@@ -42,7 +43,7 @@ public class JoystickInput : IUserInput
         Dvec = Dright2 * transform.right + Dup2 * transform.forward;
 
         run = Input.GetButton(btnA);
-
+        defense = Input.GetButton(btnLB);
 
         bool newJump = Input.GetButton(btnB);
         jump = newJump;

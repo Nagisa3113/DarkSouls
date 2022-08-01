@@ -48,7 +48,7 @@ public class ActorController : MonoBehaviour
     void Update()
     {
         anim.SetFloat("forward", pi.Dmag * Mathf.Lerp(anim.GetFloat("forward"), ((pi.run) ? 2.0f : 1.0f), 0.5f));
-
+        anim.SetBool("defense", pi.defense);
         if (rigid.velocity.magnitude > 1.0f)
         {
             anim.SetTrigger("roll");
@@ -190,7 +190,7 @@ public class ActorController : MonoBehaviour
     {
         if (CheckState("attack1hC", "Attack Layer"))
         {
-            deltaPos += (Vector3)_deltaPos;
+            deltaPos += (0.2f * deltaPos + 0.8f * (Vector3)_deltaPos) / 2.0f;
         }
     }
 }
