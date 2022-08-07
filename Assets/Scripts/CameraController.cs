@@ -24,6 +24,11 @@ public class CameraController : MonoBehaviour
         cameraHandle = transform.parent.gameObject;
         playerHandle = cameraHandle.transform.parent.gameObject;
         tempEulerX = 20;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Start()
+    {
         ActorController ac = playerHandle.GetComponent<ActorController>();
         model = ac.model;
         pi = ac.pi;

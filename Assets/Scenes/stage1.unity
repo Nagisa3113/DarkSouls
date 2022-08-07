@@ -3355,7 +3355,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910890856}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75bd678f9ba68334896ccc3db677ad31, type: 3}
   m_Name: 
@@ -3370,6 +3370,7 @@ MonoBehaviour:
   defense: 0
   jump: 0
   attack: 0
+  roll: 0
   inputEnabled: 1
   keyUp: w
   keyDown: s
@@ -3377,12 +3378,15 @@ MonoBehaviour:
   keyRight: d
   keyA: left shift
   keyB: j
-  keyC: k
-  keyD: 
+  keyC: mouse 0
+  keyD: mouse 1
   keyJLeft: left
   keyJRight: right
   keyJUp: up
   keyJDown: down
+  mouseEnable: 0
+  mouseSensitivityX: 1
+  mouseSensitivityY: 1
 --- !u!136 &1910890858
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3458,7 +3462,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910890856}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4faa7a486b38c24795d0291ef39dcb1, type: 3}
   m_Name: 
@@ -3473,6 +3477,7 @@ MonoBehaviour:
   defense: 0
   jump: 0
   attack: 0
+  roll: 0
   inputEnabled: 1
   axisX: axisX
   axisY: axisY

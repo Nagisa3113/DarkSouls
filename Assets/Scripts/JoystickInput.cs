@@ -18,9 +18,24 @@ public class JoystickInput : IUserInput
     public string btnLB = "btn4";
     public string btnLRT = "btn5";
 
+    public MyButton buttonA = new MyButton();
+    public MyButton buttonB = new MyButton();
+    public MyButton buttonX = new MyButton();
+    public MyButton buttonY = new MyButton();
+    public MyButton buttonLB = new MyButton();
+    public MyButton buttonLRT = new MyButton();
+
+
     // Update is called once per frame
     void Update()
     {
+        buttonA.Tick(Input.GetButton(btnA));
+        buttonB.Tick(Input.GetButton(btnB));
+        buttonX.Tick(Input.GetButton(btnX));
+        buttonY.Tick(Input.GetButton(btnY));
+        buttonLB.Tick(Input.GetButton(btnLB));
+        buttonLRT.Tick(Input.GetButton(btnLRT));
+
         JUp = -1 * Input.GetAxis(axisJup);
         JRight = Input.GetAxis(axisJright);
         targetDup = Input.GetAxis(axisY);
@@ -42,34 +57,11 @@ public class JoystickInput : IUserInput
         Dmag = Mathf.Sqrt((Dup2 * Dup2) + (Dright2 * Dright2));
         Dvec = Dright2 * transform.right + Dup2 * transform.forward;
 
-        run = Input.GetButton(btnA);
-        defense = Input.GetButton(btnLB);
+        run = (buttonA.IsPressing && !buttonA.IsDelaying) || buttonA.IsExtending;
+        jump = buttonA.OnPressed && buttonA.IsExtending;
+        roll = buttonA.OnReleased && buttonA.IsDelaying;
 
-        bool newJump = Input.GetButton(btnB);
-        jump = newJump;
-        if (newJump != lastJump && newJump == true)
-        {
-            jump = true;
-        }
-        else
-        {
-            jump = false;
-        }
-
-        lastJump = newJump;
-
-
-        bool newAttack = Input.GetButton(btnX);
-        attack = newAttack;
-        if (newAttack != lastAttack && newAttack == true)
-        {
-            attack = true;
-        }
-        else
-        {
-            attack = false;
-        }
-
-        lastAttack = newAttack;
+        defense = buttonLB.IsPressing;
+        attack = buttonX.OnPressed;
     }
 }

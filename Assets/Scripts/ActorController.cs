@@ -49,11 +49,11 @@ public class ActorController : MonoBehaviour
     {
         anim.SetFloat("forward", pi.Dmag * Mathf.Lerp(anim.GetFloat("forward"), ((pi.run) ? 2.0f : 1.0f), 0.5f));
         anim.SetBool("defense", pi.defense);
-        if (rigid.velocity.magnitude > 1.0f)
+        if (pi.roll || rigid.velocity.magnitude > 7f)
         {
             anim.SetTrigger("roll");
+            canAttack = false;
         }
-
 
         if (pi.jump)
         {
@@ -73,7 +73,7 @@ public class ActorController : MonoBehaviour
 
         if (lockPlanar == false)
         {
-            planarVec = pi.Dmag * model.transform.forward * walkSpeed * (pi.run ? runMultiplier : 1.0f);
+            planarVec = model.transform.forward * (pi.Dmag * walkSpeed * (pi.run ? runMultiplier : 1.0f));
         }
     }
 

@@ -16,15 +16,14 @@ public abstract class IUserInput : MonoBehaviour
 
     // 1. pressing signal
     public bool run;
-
     public bool defense;
-    
+
     // 2. trigger once signal
     public bool jump;
     protected bool lastJump;
     public bool attack;
     protected bool lastAttack;
-
+    public bool roll;
 
     // 3. double trigger
     [Header("====   Other settings  ====")]

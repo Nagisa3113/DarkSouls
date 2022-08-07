@@ -58,11 +58,8 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jump
+    m_ConditionEvent: roll
     m_EventTreshold: 0
-  - m_ConditionMode: 4
-    m_ConditionEvent: forward
-    m_EventTreshold: 1.1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1142311815588099904}
   m_Solo: 0
@@ -822,7 +819,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jump
+    m_ConditionEvent: roll
     m_EventTreshold: 0
   - m_ConditionMode: 4
     m_ConditionEvent: forward
