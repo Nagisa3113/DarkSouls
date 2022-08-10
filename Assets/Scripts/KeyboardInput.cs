@@ -5,9 +5,7 @@ using UnityEngine;
 public class KeyboardInput : IUserInput
 {
     //Variable
-    [Header("=====   Key settings   =====")]
-    public string keyUp;
-
+    [Header("===== Key settings =====")] public string keyUp;
     public string keyDown;
     public string keyLeft;
     public string keyRight;
@@ -22,9 +20,7 @@ public class KeyboardInput : IUserInput
     public string keyJUp;
     public string keyJDown;
 
-    [Header("=====  Mouse settings  =====")]
-    public bool mouseEnable = false;
-
+    [Header("===== Mouse settings =====")] public bool mouseEnable = false;
     public float mouseSensitivityX = 1.0f;
     public float mouseSensitivityY = 1.0f;
 

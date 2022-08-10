@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class IUserInput : MonoBehaviour
 {
-    [Header("====   Output Signals   ====")]
-    public float Dup;
-
+    [Header("===== Output Signals =====")] public float Dup;
     public float Dright;
     public float Dmag;
     public Vector3 Dvec;
@@ -24,11 +22,10 @@ public abstract class IUserInput : MonoBehaviour
     public bool attack;
     protected bool lastAttack;
     public bool roll;
+    public bool lockon;
 
     // 3. double trigger
-    [Header("====   Other settings  ====")]
-    public bool inputEnabled = true;
-
+    [Header("===== Other settings =====")] public bool inputEnabled = true;
     protected float targetDup;
     protected float targetDright;
     protected float velocityDup;
