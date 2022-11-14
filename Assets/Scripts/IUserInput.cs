@@ -18,11 +18,17 @@ public abstract class IUserInput : MonoBehaviour
 
     // 2. trigger once signal
     public bool jump;
+
     protected bool lastJump;
-    public bool attack;
+
+    // public bool attack;
     protected bool lastAttack;
     public bool roll;
     public bool lockon;
+    public bool lb;
+    public bool rb;
+    public bool lt;
+    public bool rt;
 
     // 3. double trigger
     [Header("===== Other settings =====")] public bool inputEnabled = true;
@@ -42,5 +48,11 @@ public abstract class IUserInput : MonoBehaviour
         output.y = input.y * Mathf.Sqrt(1 - (input.x * input.x) / 2.0f);
 
         return output;
+    }
+
+    protected void UpdateDmagDvec(float Dup2, float Dright2)
+    {
+        Dmag = Mathf.Sqrt((Dup2 * Dup2) + (Dright2 * Dright2));
+        Dvec = Dright2 * transform.right + Dup2 * transform.forward;
     }
 }

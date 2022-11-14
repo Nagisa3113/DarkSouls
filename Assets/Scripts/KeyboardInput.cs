@@ -74,16 +74,15 @@ public class KeyboardInput : IUserInput
 
         lastJump = newJump;
 
-
         bool newAttack = Input.GetKey(keyC);
-        attack = newAttack;
+        // todo
         if (newAttack != lastAttack && newAttack == true)
         {
-            attack = true;
+            rb = true;
         }
         else
         {
-            attack = false;
+            rb = false;
         }
 
         lastAttack = newAttack;

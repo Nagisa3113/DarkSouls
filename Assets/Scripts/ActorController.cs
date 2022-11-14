@@ -26,9 +26,13 @@ public class ActorController : MonoBehaviour
     private bool canAttack;
     public bool lockPlanar = false;
     private bool trackDirection = false;
+
     private CapsuleCollider col;
-    private float lerpTarget;
+
+    // private float lerpTarget;
     private Vector3 deltaPos;
+
+    public bool leftIsShield = true;
 
     void Awake()
     {
@@ -79,10 +83,37 @@ public class ActorController : MonoBehaviour
             canAttack = false;
         }
 
-        if (pi.attack && CheckState("ground") && canAttack)
+        if ((pi.rb || pi.lb) && (CheckState("ground") || CheckStateTag("attack")) && canAttack)
         {
-            anim.SetTrigger("attack");
+            if (pi.rb)
+            {
+                anim.SetBool("R0L1", false);
+                anim.SetTrigger("attack");
+            }
+            else if (pi.lb && !leftIsShield)
+            {
+                anim.SetBool("R0L1", true);
+                anim.SetTrigger("attack");
+            }
         }
+
+        if (leftIsShield)
+        {
+            if (CheckState("ground"))
+            {
+                anim.SetBool("defense", pi.defense);
+                anim.SetLayerWeight(anim.GetLayerIndex("Defense"), 1);
+            }
+            else
+            {
+                anim.SetBool("defense", false);
+            }
+        }
+        else
+        {
+            anim.SetLayerWeight(anim.GetLayerIndex("Defense"), 0);
+        }
+
 
         if (camcon.lockState == false)
         {
@@ -126,6 +157,11 @@ public class ActorController : MonoBehaviour
     bool CheckState(string stateName, string layerName = "Base Layer")
     {
         return anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(layerName)).IsName(stateName);
+    }
+
+    bool CheckStateTag(string tagName, string layerName = "Base Layer")
+    {
+        return anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(layerName)).IsTag(tagName);
     }
 
 
@@ -199,38 +235,35 @@ public class ActorController : MonoBehaviour
     {
         pi.inputEnabled = false;
         // lockPlanar = true;
-        lerpTarget = 1.0f;
+        // lerpTarget = 1.0f;
     }
 
 
     public void OnAttack1hAUpdate()
     {
         thrustVec = model.transform.forward * anim.GetFloat("attack1hAVelocity");
-        float currentWeight = anim.GetLayerWeight(anim.GetLayerIndex("Attack Layer"));
-        currentWeight = Mathf.Lerp(currentWeight, lerpTarget, 5f * Time.deltaTime);
-        anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), currentWeight);
+        // float currentWeight = anim.GetLayerWeight(anim.GetLayerIndex("Attack Layer"));
+        // currentWeight = Mathf.Lerp(currentWeight, lerpTarget, 5f * Time.deltaTime);
+        // anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), currentWeight);
     }
 
-    public void OnAttackIdleEnter()
+    public void OnHitEnter()
     {
-        pi.inputEnabled = true;
-        // lockPlanar = false;
-        //anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 0f);
-        lerpTarget = 0f;
+        pi.inputEnabled = false;
+        planarVec = Vector3.zero;
     }
 
-    public void OnAttackIdleUpdate()
-    {
-        float currentWeight = anim.GetLayerWeight(anim.GetLayerIndex("Attack Layer"));
-        currentWeight = Mathf.Lerp(currentWeight, lerpTarget, 5f * Time.deltaTime);
-        anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), currentWeight);
-    }
 
     public void OnUpdateRM(object _deltaPos)
     {
-        if (CheckState("attack1hC", "Attack Layer"))
+        if (CheckState("attack1hC"))
         {
             deltaPos += (0.2f * deltaPos + 0.8f * (Vector3)_deltaPos) / 2.0f;
         }
+    }
+
+    public void IssueTrigger(string triggerName)
+    {
+        anim.SetTrigger(triggerName);
     }
 }
