@@ -7,11 +7,13 @@ public class ActorManager : MonoBehaviour
 {
     public ActorController ac;
     public BattleManager bm;
+    public WeaponManager wm;
 
 
     private void Awake()
     {
         ac = GetComponent<ActorController>();
+        GameObject model = ac.model;
         GameObject sensor = transform.Find("sensor").gameObject;
         bm = sensor.GetComponent<BattleManager>();
         if (bm == null)
@@ -20,15 +22,18 @@ public class ActorManager : MonoBehaviour
         }
 
         bm.am = this;
+        wm = model.GetComponent<WeaponManager>();
+        if (wm == null)
+        {
+            wm = model.AddComponent<WeaponManager>();
+        }
+
+        wm.am = this;
     }
-
-
-    private void Update()
-    {
-    }
-
+    
     public void DoDamage()
     {
-        ac.IssueTrigger("hit");
+        // ac.IssueTrigger("hit");
+        ac.IssueTrigger("die");
     }
 }

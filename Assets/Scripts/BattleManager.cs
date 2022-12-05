@@ -14,7 +14,7 @@ public class BattleManager : MonoBehaviour
         defCol = GetComponent<CapsuleCollider>();
         defCol.center = Vector3.up * 1.0f;
         defCol.height = 2.0f;
-        defCol.radius = 0.25f;
+        defCol.radius = 0.5f;
         defCol.isTrigger = true;
     }
 

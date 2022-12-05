@@ -165,7 +165,7 @@ Transform:
   m_Children:
   - {fileID: 2033655851}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &159873307
 GameObject:
@@ -460,8 +460,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 319584678}
+  - component: {fileID: 319584679}
   m_Layer: 0
-  m_Name: weaponHandle
+  m_Name: weaponHandleR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,6 +483,18 @@ Transform:
   m_Father: {fileID: 413073029}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319584679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319584677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3954b5963c667224c8758cfc34a6ea57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336529816
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +538,7 @@ GameObject:
   - component: {fileID: 367452967}
   - component: {fileID: 367452966}
   - component: {fileID: 367452965}
+  - component: {fileID: 367452970}
   m_Layer: 0
   m_Name: ybot
   m_TagString: Untagged
@@ -605,6 +619,21 @@ Transform:
   m_Father: {fileID: 1676719438}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &367452970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367452964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d4a125285ae19449b4664c2d51817c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  am: {fileID: 0}
+  whL: {fileID: 1085869935}
+  whR: {fileID: 1076017933}
 --- !u!1 &369093720
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +824,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &403181877
 Animator:
@@ -2141,6 +2170,7 @@ GameObject:
   - component: {fileID: 412705664}
   - component: {fileID: 412705665}
   - component: {fileID: 412705666}
+  - component: {fileID: 412705667}
   m_Layer: 0
   m_Name: ybot
   m_TagString: Untagged
@@ -2185,6 +2215,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {x: 0, y: -67, z: 15}
+--- !u!114 &412705667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412705663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d4a125285ae19449b4664c2d51817c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  am: {fileID: 0}
+  whL: {fileID: 1260985233}
+  whR: {fileID: 319584677}
 --- !u!4 &413073025
 Transform:
   m_ObjectHideFlags: 0
@@ -3615,7 +3660,7 @@ RectTransform:
   m_Children:
   - {fileID: 2034055329}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4834,7 +4879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076017934}
   m_Layer: 0
-  m_Name: weaponHandle
+  m_Name: weaponHandleR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4865,7 +4910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1085869936}
   m_Layer: 0
-  m_Name: weaponHandle
+  m_Name: weaponHandleL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5205,7 +5250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1260985234}
   m_Layer: 0
-  m_Name: weaponHandle
+  m_Name: weaponHandleL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5795,7 +5840,7 @@ Transform:
   m_Children:
   - {fileID: 721196828}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1639830397
 GameObject:
@@ -5872,6 +5917,7 @@ GameObject:
   - component: {fileID: 1676719436}
   - component: {fileID: 1676719433}
   - component: {fileID: 1676719434}
+  - component: {fileID: 1676719435}
   m_Layer: 10
   m_Name: EnemyHandle
   m_TagString: Untagged
@@ -5930,6 +5976,21 @@ MonoBehaviour:
   lt: 0
   rt: 0
   inputEnabled: 1
+--- !u!114 &1676719435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676719432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7577ec5a2d2f58b49a768f510e46855d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ac: {fileID: 0}
+  bm: {fileID: 0}
+  wm: {fileID: 0}
 --- !u!54 &1676719436
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6099,7 +6160,7 @@ Transform:
   m_LocalScale: {x: 10, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -23.544}
 --- !u!1 &1795789023
 GameObject:
@@ -6522,7 +6583,7 @@ Transform:
   - {fileID: 869593529}
   - {fileID: 1411637071}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1910890862
 MonoBehaviour:
@@ -6576,7 +6637,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7577ec5a2d2f58b49a768f510e46855d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
   bm: {fileID: 0}
+  wm: {fileID: 0}
 --- !u!1 &1920258841
 GameObject:
   m_ObjectHideFlags: 0

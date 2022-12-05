@@ -83,7 +83,8 @@ public class ActorController : MonoBehaviour
             canAttack = false;
         }
 
-        if ((pi.rb || pi.lb) && (CheckState("ground") || CheckStateTag("attack")) && canAttack)
+        if ((pi.rb || pi.lb) && (CheckState("ground") || CheckStateTag("attackL") || CheckStateTag("attackR")) &&
+            canAttack)
         {
             if (pi.rb)
             {
@@ -154,12 +155,12 @@ public class ActorController : MonoBehaviour
         deltaPos = Vector3.zero;
     }
 
-    bool CheckState(string stateName, string layerName = "Base Layer")
+    public bool CheckState(string stateName, string layerName = "Base Layer")
     {
         return anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(layerName)).IsName(stateName);
     }
 
-    bool CheckStateTag(string tagName, string layerName = "Base Layer")
+    public bool CheckStateTag(string tagName, string layerName = "Base Layer")
     {
         return anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(layerName)).IsTag(tagName);
     }
@@ -246,6 +247,12 @@ public class ActorController : MonoBehaviour
         // currentWeight = Mathf.Lerp(currentWeight, lerpTarget, 5f * Time.deltaTime);
         // anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), currentWeight);
     }
+
+    public void OnAttackExit()
+    {
+        model.SendMessage("WeaponDisable");
+    }
+
 
     public void OnHitEnter()
     {
