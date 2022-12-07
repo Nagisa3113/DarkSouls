@@ -537,7 +537,6 @@ GameObject:
   - component: {fileID: 367452968}
   - component: {fileID: 367452967}
   - component: {fileID: 367452966}
-  - component: {fileID: 367452965}
   - component: {fileID: 367452970}
   m_Layer: 0
   m_Name: ybot
@@ -546,19 +545,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &367452965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367452964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5883310a55798a45beea08cc2b69762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  a: {x: 0, y: -67, z: 15}
 --- !u!114 &367452966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2169,7 +2155,6 @@ GameObject:
   - component: {fileID: 403181877}
   - component: {fileID: 412705664}
   - component: {fileID: 412705665}
-  - component: {fileID: 412705666}
   - component: {fileID: 412705667}
   m_Layer: 0
   m_Name: ybot
@@ -2202,19 +2187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f914c807e57ceeb4db72c03b22564636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &412705666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412705663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5883310a55798a45beea08cc2b69762, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  a: {x: 0, y: -67, z: 15}
 --- !u!114 &412705667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5991,6 +5963,7 @@ MonoBehaviour:
   ac: {fileID: 0}
   bm: {fileID: 0}
   wm: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!54 &1676719436
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6640,6 +6613,7 @@ MonoBehaviour:
   ac: {fileID: 0}
   bm: {fileID: 0}
   wm: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!1 &1920258841
 GameObject:
   m_ObjectHideFlags: 0
