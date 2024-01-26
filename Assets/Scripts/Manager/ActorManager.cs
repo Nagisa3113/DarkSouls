@@ -7,7 +7,7 @@ public class ActorManager : MonoBehaviour
 {
     public ActorController ac;
     public BattleManager bm;
-    public WeaponManager wm;
+    // public WeaponManager wm;
     public StateManager sm;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class ActorManager : MonoBehaviour
         GameObject model = ac.model;
         GameObject sensor = transform.Find("sensor").gameObject;
         bm = Bind<BattleManager>(sensor);
-        wm = Bind<WeaponManager>(model);
+        // wm = Bind<WeaponManager>(model);
         sm = Bind<StateManager>(gameObject);
     }
 
