@@ -15,19 +15,24 @@ public class JoystickInput : IUserInput
     public string btnB = "btn1";
     public string btnX = "btn2";
     public string btnY = "btn3";
+
     public string btnLB = "btn4";
-    // public string btnLRT = "btn5";
+
+    // public string btnLRT = "axis3";
     public string btnRB = "btn5";
 
     public string btnJstick = "btn9";
+    public float btnLRT;
 
     public MyButton buttonA = new MyButton();
     public MyButton buttonB = new MyButton();
     public MyButton buttonX = new MyButton();
     public MyButton buttonY = new MyButton();
     public MyButton buttonLB = new MyButton();
+
     public MyButton buttonRB = new MyButton();
-    // public MyButton buttonLRT = new MyButton();
+
+    public MyButton buttonLRT = new MyButton();
     public MyButton buttonJstick = new MyButton();
 
 
@@ -40,13 +45,14 @@ public class JoystickInput : IUserInput
         buttonY.Tick(Input.GetButton(btnY));
         buttonLB.Tick(Input.GetButton(btnLB));
         buttonRB.Tick(Input.GetButton(btnRB));
-        // buttonLRT.Tick(Input.GetButton(btnLRT));
+        // buttonLRT.Tick(Input.GetAxis(btnLRT));
         buttonJstick.Tick(Input.GetButton(btnJstick));
 
         JUp = -1 * Input.GetAxis(axisJup);
         JRight = Input.GetAxis(axisJright);
         targetDup = Input.GetAxis(axisY);
         targetDright = Input.GetAxis(axisX);
+        btnLRT = Input.GetAxis("axis3");
 
         if (inputEnabled == false)
         {
@@ -75,6 +81,8 @@ public class JoystickInput : IUserInput
         // todo
         // lt = buttonLRT.OnPressed;
         // rt = buttonLRT.OnPressed;
+
+        lt = btnLRT < -0.2 ? true : false;
 
         lockon = buttonJstick.OnPressed;
     }
