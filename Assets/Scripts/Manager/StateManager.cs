@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StateManager : IActorManagerInterface
 {
-    public float HPMax = 15.0f;
+   public float HPMax = 15.0f;
     public float HP = 15.0f;
 
 
@@ -43,7 +43,7 @@ public class StateManager : IActorManagerInterface
         isHit = am.ac.CheckState("hit");
         isDie = am.ac.CheckState("die");
         isBlocked = am.ac.CheckState("blocked");
-        isCounterBack = am.ac.CheckState("couterBack");
+        isCounterBack = am.ac.CheckState("counterBack");
         isCounterBackSuccess = isCounterBackEnable;
         isCounterBackFailure = isCounterBack && !isCounterBackEnable;
 

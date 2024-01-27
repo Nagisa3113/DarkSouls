@@ -87,7 +87,7 @@ public class ActorManager : MonoBehaviour
         }
         else
         {
-            sm.AddHP(-5);
+            sm.AddHP(-2);
             if (sm.HP > 0)
             {
                 if (doHitAnimation)
