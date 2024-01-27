@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class TransformHelpers
+public static class TransformUtility
 {
     public static Transform DeepFind(this Transform parent, string targetName)
     {
